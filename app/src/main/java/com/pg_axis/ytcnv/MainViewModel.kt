@@ -31,8 +31,10 @@ import com.pg_axis.ytcnv.utils.StringUtils.cleanUrl
 import com.pg_axis.ytcnv.utils.StringUtils.isValidId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.time.Duration.Companion.milliseconds
 
 enum class PopupType {
     SUCCESS,
@@ -121,6 +123,37 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     var dialogTitle by mutableStateOf("")
     var dialogAuthor by mutableStateOf("")
     private var pendingOnConfirm: ((String, String) -> Unit)? = null
+    var autoDownloadSecondsRemaining by mutableIntStateOf(AUTO_DOWNLOAD_SECONDS)
+        private set
+    private var autoDownloadJob: Job? = null
+
+    fun onDialogTitleChanged(value: String) {
+        dialogTitle = value
+        onTitleAuthorDialogInteraction()
+    }
+
+    fun onDialogAuthorChanged(value: String) {
+        dialogAuthor = value
+        onTitleAuthorDialogInteraction()
+    }
+
+    fun onTitleAuthorDialogInteraction() {
+        autoDownloadJob?.cancel()
+        autoDownloadSecondsRemaining = AUTO_DOWNLOAD_SECONDS
+        autoDownloadJob = viewModelScope.launch {
+            delay(1000.milliseconds)
+            while (autoDownloadSecondsRemaining > 0) {
+                delay(1000.milliseconds)
+                autoDownloadSecondsRemaining--
+            }
+            onTitleAuthorConfirmed()
+        }
+    }
+
+    private fun cancelAutoDownloadTimer() {
+        autoDownloadJob?.cancel()
+        autoDownloadJob = null
+    }
 
     var video by mutableStateOf<Video?>(null)
         private set
@@ -241,13 +274,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         showCancelConfirmDialog = false
     }
 
-    fun onTitleAuthorConfirmed(title: String, author: String) {
+    fun onTitleAuthorConfirmed() {
+        cancelAutoDownloadTimer()
         showTitleAuthorDialog = false
-        pendingOnConfirm?.invoke(title, author)
+        pendingOnConfirm?.invoke(dialogTitle, dialogAuthor)
         pendingOnConfirm = null
     }
 
     fun onTitleAuthorDismissed() {
+        cancelAutoDownloadTimer()
         showTitleAuthorDialog = false
         activeJob?.cancel()
         resetAfterInterruption()
@@ -380,6 +415,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             dialogAuthor = author
             pendingOnConfirm = onConfirm
             showTitleAuthorDialog = true
+            onTitleAuthorDialogInteraction()
         }
 
         override fun offerKeepPartialDownload(sizeBytes: Long, streamLabel: String, onChoice: (Boolean) -> Unit) {
@@ -399,5 +435,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         override fun stopService() {
             this@MainViewModel.stopService()
         }
+    }
+
+    companion object {
+        private const val AUTO_DOWNLOAD_SECONDS = 30
     }
 }

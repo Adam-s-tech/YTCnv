@@ -89,9 +89,13 @@ fun MainScreen(
     ) {
         if (viewModel.showTitleAuthorDialog) {
             TitleAuthorDialog(
-                initialTitle = viewModel.dialogTitle,
-                initialAuthor = viewModel.dialogAuthor,
-                onConfirm = { title, author -> viewModel.onTitleAuthorConfirmed(title, author) },
+                title = viewModel.dialogTitle,
+                author = viewModel.dialogAuthor,
+                secondsRemaining = viewModel.autoDownloadSecondsRemaining,
+                onTitleChange = { viewModel.onDialogTitleChanged(it) },
+                onAuthorChange = { viewModel.onDialogAuthorChanged(it) },
+                onInteraction = { viewModel.onTitleAuthorDialogInteraction() },
+                onConfirm = { viewModel.onTitleAuthorConfirmed() },
                 onDismiss = { viewModel.onTitleAuthorDismissed() }
             )
         }

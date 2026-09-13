@@ -1,0 +1,5 @@
+Opravy chyb:
+- Vymazání bodu z historie stahování/vyhledávání zduplikuje poslední bod (v případě historie stahování to mohlo způsobit pád aplikace)
+
+Co je nového:
+- Automatický časovač na dialogu pro název/autora nyní automaticky vybere poslední zadané texty pro název a autora po 30 sekundách (#10)

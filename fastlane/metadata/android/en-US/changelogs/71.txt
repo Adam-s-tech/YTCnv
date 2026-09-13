@@ -1,0 +1,5 @@
+Bug fixes:
+- Deleting an entry from download or search history duplicated the last entry (in case of the download history, it could cause a crash)
+
+Additions:
+- There is an automatic countdown for the title/author dialog, which now automatically selects the last entered title and author texts after 30 seconds (#10)

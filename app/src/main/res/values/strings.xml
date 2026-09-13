@@ -1,6 +1,7 @@
 <resources>
     <!-- Manifest strings -->
     <string name="app_name">YouTube Conv.axs</string>
+    <string name="full_app">The full app</string>
     <string name="open_overlay">Overlay</string>
     <string name="share_quick_download">Quick download</string>
     <string name="share_loading_quality">Loading quality options…</string>
@@ -116,6 +117,7 @@
     <string name="tad_edit_metadata">Edit metadata</string>
     <string name="tad_title">Title</string>
     <string name="tad_author">Author</string>
+    <string name="tad_download_countdown">Time until auto-download: %d</string>
 
     <!-- Update Dialog -->
     <string name="ud_update_available">Update available</string>

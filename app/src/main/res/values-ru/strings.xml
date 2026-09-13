@@ -1,6 +1,7 @@
 <resources>
     <!-- Manifest strings -->
     <string name="app_name">YouTube Conv.axs</string>
+    <string name="full_app">Полное приложение</string>
     <string name="open_overlay">Наложение</string>
     <string name="share_quick_download">Быстрая загрузка</string>
     <string name="share_loading_quality">Варианты качества загрузки…</string>
@@ -116,6 +117,7 @@
     <string name="tad_edit_metadata">Изменить метаданные</string>
     <string name="tad_title">Название</string>
     <string name="tad_author">Автор</string>
+    <string name="tad_download_countdown">Время до автоматической загрузки: %d</string>
 
     <!-- Update Dialog -->
     <string name="ud_update_available">Доступно обновление</string>

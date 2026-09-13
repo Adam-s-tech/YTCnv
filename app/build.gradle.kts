@@ -32,8 +32,8 @@ android {
         applicationId = "com.pg_axis.ytcnv"
         minSdk = 25
         targetSdk = 37
-        versionCode = 70
-        versionName = "3.16.0"
+        versionCode = 71
+        versionName = "3.16.1"
 
         ndk {
             //noinspection ChromeOsAbiSupport

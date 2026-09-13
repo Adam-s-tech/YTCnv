@@ -14,7 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -97,10 +97,10 @@ fun HistoryScreen(
                     .fillMaxSize()
                     .padding(10.dp)
             ) {
-                items(
+                itemsIndexed(
                     items = vm.settings.downloadHistory,
-                    key = { it.urlOrId }
-                ) { historyItem ->
+                    key = { i, item -> "${item.urlOrId}_${i}" }
+                ) { _, historyItem ->
                     LaunchedEffect(historyItem.uri, historyItem.downloaded) {
                         if (historyItem.downloaded && historyItem.uri.isNotEmpty()) {
                             val isValid = withContext(Dispatchers.IO) {

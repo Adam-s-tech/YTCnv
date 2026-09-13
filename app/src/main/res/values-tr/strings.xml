@@ -1,6 +1,7 @@
 <resources>
     <!-- Manifest strings -->
     <string name="app_name">YouTube Conv.axs</string>
+    <string name="full_app">Tam uygulama</string>
     <string name="open_overlay">Üst üste bindirme</string>
     <string name="share_quick_download">Hızlı indirme</string>
     <string name="share_loading_quality">Kalite seçenekleri yükleniyor…</string>
@@ -116,6 +117,7 @@
     <string name="tad_edit_metadata">Meta veriyi düzenle</string>
     <string name="tad_title">Başlık</string>
     <string name="tad_author">Yazar</string>
+    <string name="tad_download_countdown">Otomatik indirmeye kalan süre: %d</string>
 
     <!-- Update Dialog -->
     <string name="ud_update_available">Güncelleme mevcut</string>

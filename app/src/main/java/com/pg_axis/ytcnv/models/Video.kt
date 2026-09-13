@@ -860,7 +860,6 @@ class Video(
                 append("-c:v:1 mjpeg -disposition:v:1 attached_pic ")
                 append("-metadata:s:v:1 title=\"Album cover\" -metadata:s:v:1 comment=\"Cover\" ")
             }
-            append("-shortest ")
             append("-metadata title=\"$title\" -metadata artist=\"$author\" ")
             append(muxerFlag)
             append("\"$outputPath\"")

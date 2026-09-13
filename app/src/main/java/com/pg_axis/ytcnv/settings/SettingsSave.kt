@@ -173,5 +173,11 @@ class SettingsSave private constructor(context: Context) : ISettings {
         val e = boundExtraData.get()
         searchHistory = e.searchHistory
         downloadHistory = e.downloadHistory
+
+        cleanDownloadHistory()
+    }
+
+    fun cleanDownloadHistory() {
+        downloadHistory = downloadHistory.distinctBy { it.urlOrId }
     }
 }
