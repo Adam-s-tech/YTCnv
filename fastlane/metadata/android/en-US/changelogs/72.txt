@@ -1,0 +1,2 @@
+Bug fixes:
+- The launcher's title was accidentally replaced with "The full app", which was only meant for the share function

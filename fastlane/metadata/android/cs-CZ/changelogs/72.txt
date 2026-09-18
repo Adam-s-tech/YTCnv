@@ -1,0 +1,2 @@
+Opravy chyb:
+- Název aplikace byl omylem změněn na "Celá aplikace", což bylo pouze míněno pro funkci sdílení
