@@ -3,7 +3,9 @@ This app uses NewPipe Extractor to fetch downloadable YouTube streams
 
 Features:
 
-- Download as MP3 or MP4
+- Download as audio or video
+- Supported audio formats: MP3, AAC (M4A), Opus
+- Supported video formats: MP4, VP9 (WebM).
 - Embedded metadata and album art for MP3s
 - Quick download mode or manual quality selection
 - YouTube search with thumbnails, duration and channel name

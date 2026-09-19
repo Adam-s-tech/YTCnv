@@ -1,1 +1,1 @@
-Download YouTube videos as MP3 or MP4 with metadata and thumbnail embedding
+Download YouTube videos as audio or video with metadata and thumbnail embedding

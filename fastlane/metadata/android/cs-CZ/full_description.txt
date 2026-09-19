@@ -3,7 +3,9 @@ Tato aplikace používá NewPipe Extractor k načítání stahovatelných stream
 
 Funkce:
 
-- Stahování jako MP3 nebo MP4
+- Stahování jako audio nebo video
+- Podporované audio formáty: MP3, AAC (M4A), Opus
+- Podporované video formáty: MP4, VP9 (WebM).
 - Vepsání metadat a album artu pro MP3 soubory
 - Mód pro rychlé stažení nebo manuální selekce kvality
 - Vyhledávání YouTube videí přímo v aplikaci s náhledy, délkou a názvem kanálu
